@@ -39,4 +39,108 @@ const siteContent = {
 
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
-logo.setAttribute('src', siteContent["nav"]["img-src"])
+logo.setAttribute("src", siteContent["nav"]["img-src"]);
+
+// Header Title Text
+let h1 = document.getElementsByTagName("h1");
+h1[0].innerHTML = siteContent.cta.h1;
+
+// Call to Action Button
+let button = document.getElementsByTagName("button");
+button[0].textContent = siteContent.cta.button;
+
+// Paragraph Titles
+let h4 = document.querySelectorAll(".main-content h4");
+let mainContentArray = ["features", "about", "services", "product", "vision"];
+
+for (let i = 0; i < mainContentArray.length; i++) {
+  h4[i].textContent = siteContent["main-content"][`${mainContentArray[i]}-h4`];
+}
+
+// Code snippet image
+let snippet = document.getElementById("cta-img");
+snippet.setAttribute("src", siteContent["cta"]["img-src"]);
+
+// Header Links
+let headerLink1 = document.querySelectorAll("a");
+
+for (let i = 0; i < headerLink1.length; i++) {
+  headerLink1[i].textContent = siteContent.nav[`nav-item-${i + 1}`];
+}
+
+// Changing color to GREEN
+headerLink1.forEach(a => {
+  a.style.color = "green";
+});
+
+// Paragraph Text
+let featuresPTags = document.querySelectorAll("p");
+let contentArray = [
+  siteContent["main-content"]["features-content"],
+  siteContent["main-content"]["about-content"],
+  siteContent["main-content"]["services-content"],
+  siteContent["main-content"]["product-content"],
+  siteContent["main-content"]["vision-content"]
+];
+for (let i = 0; i < featuresPTags.length; i++) {
+  featuresPTags[i].textContent = contentArray[i];
+}
+
+// Middle Image
+let middleImage = document.querySelector("#middle-img");
+middleImage.setAttribute("src", siteContent["main-content"]["middle-img-src"]);
+
+// Contact Section
+let contact = document.querySelector(".contact").querySelectorAll("p");
+let contacth4 = document.querySelector(".contact").querySelectorAll("h4");
+contacth4[0].textContent = siteContent.contact["contact-h4"];
+contact[0].textContent = siteContent.contact.address;
+contact[1].textContent = siteContent.contact.phone;
+contact[2].textContent = siteContent.contact.email;
+
+// Footer Section
+let footerText = document.querySelector("footer").querySelector("p");
+footerText.innerText = siteContent.footer.copyright;
+
+let nav = document.querySelector("nav");
+
+// Append Child to NAV
+let aNode = document.createElement("a");
+aNode.style.color = "green";
+let textNode = document.createTextNode("Portfolio");
+
+// Prepend Child to NAV
+let aNode1 = document.createElement("a");
+aNode1.style.color = "green";
+let textNode0 = document.createTextNode("About Me");
+
+aNode.appendChild(textNode); 
+aNode1.prepend(textNode0);
+nav.appendChild(aNode); 
+nav.prepend(aNode1);
+
+// STRETCH GOALS
+const handleClick = () => {
+  h1[0].innerHTML = newSiteContent.cta.h1;
+  button[0].textContent = newSiteContent.cta.button;
+
+  for (let i = 0; i < mainContentArray.length; i++) {
+    h4[i].textContent =
+      newSiteContent["main-content"][`${mainContentArray[i]}-h4`];
+  }
+
+  for (let i = 0; i < headerLink1.length; i++) {
+    headerLink1[i].textContent = newSiteContent.nav[`nav-item-${i + 1}`];
+  }
+
+  featuresPTags.forEach(element => {
+    featuresPTags.textContent = newContentArray;
+  });  
+
+  contacth4[0].textContent = newSiteContent.contact["contact-h4"];
+  contact[0].textContent = newSiteContent.contact.address;
+  contact[1].textContent = newSiteContent.contact.phone;
+  contact[2].textContent = newSiteContent.contact.email;
+
+  footerText.innerText = newSiteContent.footer.copyright;
+};
